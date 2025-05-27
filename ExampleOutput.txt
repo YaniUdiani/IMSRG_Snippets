@@ -1,0 +1,378 @@
+cmd: ./imsrg -gen white -config NO3B -N 66 -Z 66 -numShells 27 -rho 0.07 -solver magnus -ds 1 -cTz -usePh -boxDimension 3 -h fit:2 -density 0.07 -pf 0.5 
+hostname: acm-061
+date (month/day/year): 07/11/2024 : 10:51:35
++++++++++++++++++++++++++++++++++++
+overall configuration
++++++++++++++++++++++++++++++++++++
+
+N....................................................66
+Z....................................................66
+numShells............................................27
+rho.................................................0.1
+temperature.........................................0.0
+
+ConserveTz............................................1
+usePH.................................................1
+boxDimension..........................................3
+ds..................................................1.0
+ODE_threshold.......................................0.0
+useSCKYTrunc..........................................0
+
+Jmax..................................................6
+bornOrder...........................................100
+genRefOrder..........................................14
+genTargOrder.........................................14
+generator_choice......................................0
+imsrgRunConfig........................................2
+imsrgSolver...........................................0
+
+
+----------------------------------------------------------------------------------------------------------------
+------------------------------------------ SINGLE PARTICLE BASIS INFO ------------------------------------------
+
+Neutron number (N): 66
+Proton number (Z): 66
+Total particle number (A): 132
+Neutron fraction (xn): 0.5
+Proton fraction (xp): 0.5
+[NOTIFICATION]: min(N,Z) > 0! All isospin projections must and will be kept.
+[ACTION]: Generating and populating single particle states (SPS)...
+[SUCCESS!]: The single particle basis (SPB) has been constructed.
+
+[UNIT SYSTEM]: Length[fm], Density[fm^-3], Momentum[fm^-1], Mass/Energy[MeV]
+[NOTIFICATION]: Using SPB composed of plane waves in a 3-D box with periodic boundary conditions.
+Number of shells above max(N,Z) occupied orbits (numShells): 27
+SPS obtained using box cutoff: n_x^2 + n_y^2 + n_z^2 <= nmax
+Number of single particle states (numSPS): 3700
+Box size (L): 12.35450351 [fm]
+Particle density (A/L^3): 0.07000000 [fm^-3]
+Neutron fermi momentum (kfn): 1.01714898 [fm^-1], 200.71093640 [MeV]
+Proton fermi momentum (kfp): 1.01714898 [fm^-1], 200.71093640 [MeV]
+Momentum cuttoff (kmax): 3.05144693 [fm^-1], 602.13280919 [MeV]
+[NOTIFICATION]: All 132 fermions have the lowest possible kinetic energies consistent with the exclusion principle.
+
+----------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
+
+[NOTIFICATION]: When handling: Two Particle Basis.
+The 2-particle basis has been successfully constructed!
+Number of stored physical 2-particle states: 13686300
+Number of blocks in the 2-particle basis: 20595
+Time taken to create standard basis --- 10.187 --- minutes.
+
+[NOTIFICATION]: When handling: A-Body Operator: H
+This 98.666225 [GB] HamiltonianOp is populating itself up to at most the 2-Body level.
+Time taken to populate HamiltonianOp --- 5.128 --- seconds.
+
+[NOTIFICATION]: When handling: A-Body Operator: H
+Generating 2BD anti-symmetrized matrix elements using the CD potential with reorganized 2BD basis.
+
+[NOTIFICATION]: When handling: A-Body Operator: H
+This HamiltonianOp is normal ordering itself at the 2-Body level 
+with an additional 3-Body component done on the fly.
+
+[NOTIFICATION]: When handling: A-Body Operator: H
+NormalOrder3BDOnTheFly with reorganized 2BD basis.
+Time taken to normal order HamiltonianOp --- 14.418 --- hours.
+H[1] = (7540.91259653,0.00000000)
+H[2] = (12216.92380035,0.00000000)
+H[2]_diag = (12179.59406110,-0.00000000)
+
+[NOTIFICATION]: When handling commutator routine. 
+Constructing particle-hole basis.
+Time taken to construct the particle-hole basis --- 21.547 --- minutes.
+
+[NOTIFICATION]: When handling: A-Body Operator: Eta
+Generating White generator.
+
+[NOTIFICATION]: When handling: IMSRG ODE Solver. 
+All 9 needed A-Body operators have been created costing a total 867.056219 [GB].
+Time taken to construct operators and commutator --- 25.352 --- minutes.
+Initiating IMSRG(2) evolution... 
+
+Flow (s)          E/A         (E+DE2)/A      Shanks(1)        Pade        ||Eta[2]||    ||Gammaod||
+---------------------------------------------------------------------------------------------------
+0.00000000    -2.87177788    -10.20417547   -10.20417547   -10.20417547   9.46744568    954.31419794
+1.00000000    -9.13625991    -9.63386682    -9.63386682    -9.66405406    2.49801991    235.12842855
+2.00000000    -9.57602148    -9.58883285    -9.58497190    -9.58497190    0.36084571    41.63837860
+3.00000000    -9.58617863    -9.58728674    -9.58723178    -9.58727236    0.11701142    11.06332274
+4.00000000    -9.58854339    -9.58880038    -9.58805159    -9.59378054    0.06041968    4.92847983
+5.00000000    -9.58948705    -9.58957830    -9.59040081    -9.59001320    0.03695534    2.85519511
+6.00000000    -9.59006765    -9.59010517    -9.59121092    -9.59059207    0.02418047    1.79456587
+7.00000000    -9.59041701    -9.59043327    -9.59097490    -9.59100702    0.01607614    1.17102851
+8.00000000    -9.59063821    -9.59064543    -9.59103360    -9.59102372    0.01078434    0.77470999
+
+Correlation energy per particle: -6.71886033
+
+Time taken to perform IMSRG transformations --- 15.717 --- hours.
+
+[NOTIFICATION]: When handling commutator routine. 
+Printing any existing performance statistics: 
+---------------------------------------------------------------------------------------------------
+Commute(): 97 calls | <duration> = 9.0391 minutes | total duration = 14.6132 hours
+Commute1_1_0(): 97 calls | 0.0032 % of total duration
+Commute1_1_1(): 97 calls | 0.3583 % of total duration
+Commute1_2_2(): 194 calls | 1.9059 % of total duration
+Commute2_2_0(): 97 calls | 0.0614 % of total duration
+Commute2_2_1(): 97 calls | 0.5286 % of total duration
+Commute2_2_2(): 97 calls | 97.1425 % of total duration
+Commute2_2_2_Ladder(): 97 calls | 77.2428 % of total duration
+Commute2_2_2_Ladder()'s DotProd(): 97 calls | 69.2882 % of total duration
+Commute2_2_2_Ladder()'s hermitize: 97 calls | 4.5688 % of total duration
+Commute2_2_2_PH(): 97 calls | 19.8998 % of total duration
+Commute2_2_2_PH()'s DotProd(): 97 calls | 18.4509 % of total duration
+PH-Transform: 97 calls | 0.4906 % of total duration
+PH-Inverse Transform: 97 calls | 0.9583 % of total duration
+Anti-Symmetrization: 97 calls | 0.0000 % of total duration
+There were 16 Anti-Hermitian commute calls.
+There were 81 Hermitian commute calls.
+Operators for approximate particle-hole cost a total 77.83590912 [GB].
+
+[NOTIFICATION]: When handling: Rank 2-Body Operator: 1st Internal Commutator Temporary
+Printing distribution of blocks: 
+There are a total of 6152949066 matrix elements.
+There are 156 blocks shaped (1, 1)
+There are 954 blocks shaped (4, 4)
+There are 144 blocks shaped (5, 5)
+There are 774 blocks shaped (8, 8)
+There are 48 blocks shaped (9, 9)
+There are 600 blocks shaped (12, 12)
+There are 312 blocks shaped (16, 16)
+There are 120 blocks shaped (20, 20)
+There are 120 blocks shaped (21, 21)
+There are 792 blocks shaped (24, 24)
+There are 48 blocks shaped (25, 25)
+There are 96 blocks shaped (28, 28)
+There are 216 blocks shaped (32, 32)
+There are 336 blocks shaped (36, 36)
+There are 96 blocks shaped (37, 37)
+There are 144 blocks shaped (40, 40)
+There are 48 blocks shaped (41, 41)
+There are 348 blocks shaped (44, 44)
+There are 360 blocks shaped (48, 48)
+There are 48 blocks shaped (49, 49)
+There are 120 blocks shaped (52, 52)
+There are 288 blocks shaped (56, 56)
+There are 144 blocks shaped (60, 60)
+There are 16 blocks shaped (61, 61)
+There are 264 blocks shaped (64, 64)
+There are 96 blocks shaped (69, 69)
+There are 264 blocks shaped (72, 72)
+There are 192 blocks shaped (76, 76)
+There are 60 blocks shaped (77, 77)
+There are 288 blocks shaped (80, 80)
+There are 120 blocks shaped (84, 84)
+There are 288 blocks shaped (88, 88)
+There are 24 blocks shaped (92, 92)
+There are 144 blocks shaped (96, 96)
+There are 48 blocks shaped (97, 97)
+There are 72 blocks shaped (100, 100)
+There are 48 blocks shaped (104, 104)
+There are 192 blocks shaped (108, 108)
+There are 264 blocks shaped (112, 112)
+There are 48 blocks shaped (116, 116)
+There are 168 blocks shaped (120, 120)
+There are 248 blocks shaped (124, 124)
+There are 192 blocks shaped (128, 128)
+There are 96 blocks shaped (132, 132)
+There are 48 blocks shaped (137, 137)
+There are 240 blocks shaped (140, 140)
+There are 48 blocks shaped (144, 144)
+There are 48 blocks shaped (148, 148)
+There are 96 blocks shaped (149, 149)
+There are 180 blocks shaped (152, 152)
+There are 78 blocks shaped (156, 156)
+There are 216 blocks shaped (160, 160)
+There are 96 blocks shaped (164, 164)
+There are 96 blocks shaped (168, 168)
+There are 48 blocks shaped (169, 169)
+There are 48 blocks shaped (172, 172)
+There are 72 blocks shaped (176, 176)
+There are 204 blocks shaped (184, 184)
+There are 48 blocks shaped (192, 192)
+There are 48 blocks shaped (193, 193)
+There are 120 blocks shaped (196, 196)
+There are 24 blocks shaped (200, 200)
+There are 96 blocks shaped (204, 204)
+There are 160 blocks shaped (208, 208)
+There are 144 blocks shaped (212, 212)
+There are 144 blocks shaped (216, 216)
+There are 48 blocks shaped (217, 217)
+There are 72 blocks shaped (224, 224)
+There are 24 blocks shaped (225, 225)
+There are 24 blocks shaped (232, 232)
+There are 240 blocks shaped (240, 240)
+There are 96 blocks shaped (244, 244)
+There are 120 blocks shaped (248, 248)
+There are 48 blocks shaped (253, 253)
+There are 48 blocks shaped (256, 256)
+There are 48 blocks shaped (257, 257)
+There are 48 blocks shaped (260, 260)
+There are 192 blocks shaped (264, 264)
+There are 48 blocks shaped (268, 268)
+There are 192 blocks shaped (272, 272)
+There are 24 blocks shaped (276, 276)
+There are 96 blocks shaped (280, 280)
+There are 12 blocks shaped (289, 289)
+There are 96 blocks shaped (292, 292)
+There are 120 blocks shaped (296, 296)
+There are 48 blocks shaped (300, 300)
+There are 54 blocks shaped (304, 304)
+There are 144 blocks shaped (308, 308)
+There are 24 blocks shaped (312, 312)
+There are 48 blocks shaped (320, 320)
+There are 96 blocks shaped (324, 324)
+There are 96 blocks shaped (328, 328)
+There are 72 blocks shaped (336, 336)
+There are 24 blocks shaped (340, 340)
+There are 72 blocks shaped (344, 344)
+There are 48 blocks shaped (348, 348)
+There are 96 blocks shaped (349, 349)
+There are 144 blocks shaped (368, 368)
+There are 48 blocks shaped (372, 372)
+There are 192 blocks shaped (376, 376)
+There are 48 blocks shaped (384, 384)
+There are 24 blocks shaped (388, 388)
+There are 48 blocks shaped (389, 389)
+There are 48 blocks shaped (392, 392)
+There are 48 blocks shaped (400, 400)
+There are 192 blocks shaped (408, 408)
+There are 24 blocks shaped (412, 412)
+There are 80 blocks shaped (416, 416)
+There are 48 blocks shaped (420, 420)
+There are 168 blocks shaped (424, 424)
+There are 12 blocks shaped (428, 428)
+There are 24 blocks shaped (432, 432)
+There are 24 blocks shaped (436, 436)
+There are 16 blocks shaped (437, 437)
+There are 12 blocks shaped (452, 452)
+There are 96 blocks shaped (456, 456)
+There are 144 blocks shaped (464, 464)
+There are 96 blocks shaped (480, 480)
+There are 48 blocks shaped (484, 484)
+There are 48 blocks shaped (485, 485)
+There are 48 blocks shaped (488, 488)
+There are 96 blocks shaped (504, 504)
+There are 24 blocks shaped (508, 508)
+There are 96 blocks shaped (512, 512)
+There are 24 blocks shaped (516, 516)
+There are 24 blocks shaped (520, 520)
+There are 96 blocks shaped (524, 524)
+There are 72 blocks shaped (528, 528)
+There are 48 blocks shaped (533, 533)
+There are 24 blocks shaped (536, 536)
+There are 96 blocks shaped (544, 544)
+There are 96 blocks shaped (552, 552)
+There are 48 blocks shaped (568, 568)
+There are 48 blocks shaped (577, 577)
+There are 6 blocks shaped (580, 580)
+There are 96 blocks shaped (584, 584)
+There are 48 blocks shaped (592, 592)
+There are 96 blocks shaped (604, 604)
+There are 12 blocks shaped (605, 605)
+There are 48 blocks shaped (608, 608)
+There are 48 blocks shaped (612, 612)
+There are 72 blocks shaped (616, 616)
+There are 48 blocks shaped (628, 628)
+There are 48 blocks shaped (632, 632)
+There are 24 blocks shaped (641, 641)
+There are 48 blocks shaped (648, 648)
+There are 24 blocks shaped (656, 656)
+There are 24 blocks shaped (672, 672)
+There are 96 blocks shaped (680, 680)
+There are 96 blocks shaped (684, 684)
+There are 24 blocks shaped (688, 688)
+There are 24 blocks shaped (696, 696)
+There are 96 blocks shaped (700, 700)
+There are 16 blocks shaped (716, 716)
+There are 24 blocks shaped (736, 736)
+There are 72 blocks shaped (744, 744)
+There are 96 blocks shaped (748, 748)
+There are 96 blocks shaped (752, 752)
+There are 96 blocks shaped (764, 764)
+There are 24 blocks shaped (768, 768)
+There are 24 blocks shaped (780, 780)
+There are 12 blocks shaped (784, 784)
+There are 48 blocks shaped (785, 785)
+There are 24 blocks shaped (800, 800)
+There are 48 blocks shaped (812, 812)
+There are 72 blocks shaped (816, 816)
+There are 12 blocks shaped (824, 824)
+There are 24 blocks shaped (840, 840)
+There are 144 blocks shaped (848, 848)
+There are 6 blocks shaped (856, 856)
+There are 8 blocks shaped (876, 876)
+There are 48 blocks shaped (877, 877)
+There are 48 blocks shaped (888, 888)
+There are 48 blocks shaped (912, 912)
+There are 24 blocks shaped (916, 916)
+There are 48 blocks shaped (920, 920)
+There are 48 blocks shaped (924, 924)
+There are 72 blocks shaped (928, 928)
+There are 48 blocks shaped (952, 952)
+There are 24 blocks shaped (968, 968)
+There are 24 blocks shaped (972, 972)
+There are 12 blocks shaped (985, 985)
+There are 48 blocks shaped (1008, 1008)
+There are 96 blocks shaped (1012, 1012)
+There are 48 blocks shaped (1024, 1024)
+There are 48 blocks shaped (1048, 1048)
+There are 48 blocks shaped (1052, 1052)
+There are 16 blocks shaped (1053, 1053)
+There are 24 blocks shaped (1068, 1068)
+There are 48 blocks shaped (1104, 1104)
+There are 48 blocks shaped (1112, 1112)
+There are 24 blocks shaped (1136, 1136)
+There are 48 blocks shaped (1152, 1152)
+There are 24 blocks shaped (1156, 1156)
+There are 72 blocks shaped (1168, 1168)
+There are 12 blocks shaped (1188, 1188)
+There are 48 blocks shaped (1208, 1208)
+There are 6 blocks shaped (1212, 1212)
+There are 24 blocks shaped (1216, 1216)
+There are 24 blocks shaped (1217, 1217)
+There are 24 blocks shaped (1224, 1224)
+There are 24 blocks shaped (1256, 1256)
+There are 24 blocks shaped (1264, 1264)
+There are 12 blocks shaped (1284, 1284)
+There are 48 blocks shaped (1288, 1288)
+There are 48 blocks shaped (1348, 1348)
+There are 48 blocks shaped (1360, 1360)
+There are 48 blocks shaped (1368, 1368)
+There are 24 blocks shaped (1400, 1400)
+There are 12 blocks shaped (1405, 1405)
+There are 8 blocks shaped (1432, 1432)
+There are 16 blocks shaped (1452, 1452)
+There are 24 blocks shaped (1488, 1488)
+There are 48 blocks shaped (1496, 1496)
+There are 72 blocks shaped (1528, 1528)
+There are 6 blocks shaped (1568, 1568)
+There are 24 blocks shaped (1572, 1572)
+There are 36 blocks shaped (1624, 1624)
+There are 48 blocks shaped (1696, 1696)
+There are 24 blocks shaped (1756, 1756)
+There are 24 blocks shaped (1776, 1776)
+There are 12 blocks shaped (1832, 1832)
+There are 24 blocks shaped (1840, 1840)
+There are 24 blocks shaped (1848, 1848)
+There are 2 blocks shaped (1849, 1849)
+There are 24 blocks shaped (1904, 1904)
+There are 6 blocks shaped (1972, 1972)
+There are 48 blocks shaped (2024, 2024)
+There are 24 blocks shaped (2104, 2104)
+There are 8 blocks shaped (2108, 2108)
+There are 24 blocks shaped (2224, 2224)
+There are 24 blocks shaped (2304, 2304)
+There are 24 blocks shaped (2336, 2336)
+There are 6 blocks shaped (2376, 2376)
+There are 12 blocks shaped (2436, 2436)
+There are 24 blocks shaped (2576, 2576)
+There are 24 blocks shaped (2696, 2696)
+There are 6 blocks shaped (2812, 2812)
+There are 8 blocks shaped (2904, 2904)
+There are 12 blocks shaped (3056, 3056)
+There are 6 blocks shaped (3248, 3248)
+There is 1 block shaped (3700, 3700)
+---------------------------------------------------------------------------------------------------
+
+Time taken to run entire program --- 1.380 --- days.
