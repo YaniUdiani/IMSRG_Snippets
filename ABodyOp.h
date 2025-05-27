@@ -1,3 +1,11 @@
+/**
+ * ABodyOps are a foundational data structure of our IMSRG code. They store pointers to BodyOps, which store blocks of Eigen matrices. 
+ * In our largest calculations, ABodyOps allocate a total of ~1 TB of RAM via BodyOps. Proper memory management of ABodyOps
+ * and their subsidiaries BodyOps is therefore crucial. Moreover, commutators (tensor contractions) between them are the most performance 
+ * limiting operations in the code. To achieve the code's performance at scale, I made a multitude of optimizations to ABodyOps 
+ * and their commutators.
+ */
+
 #ifndef IMSRG_ABODYOP_H
 #define IMSRG_ABODYOP_H
 
@@ -159,10 +167,6 @@ public:
         }
         return *pBodyOps[rank];
     }
-/*
-    ABodyOp& CommutatorManager(const ABodyOp& other) const;
-    ABodyOp& operator&(const ABodyOp& other) const;
-*/
 
     //---------------------------------------------- Interface  --------------------------------------------------------
 
