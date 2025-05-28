@@ -8,7 +8,7 @@ the ground up that simulates many interacting nucleons within a neutron star to 
 (eigenvalues) that determine its pressure, stability, and 3D properties.
 
 > **Our Nuclear Matter IMSRG program is proprietary to the Facility for Rare Isotope Beams (FRIB) and was decided to be kept private.
-This repository displays snippets of the code to the general public. See the description of each file below. Also see the **
+This repository displays snippets of the code to the general public. See the description of each file below. Also see the**
 ### ABodyOp.h
 ABodyOps are a foundational data structure of our IMSRG code. They store pointers to BodyOps, which store blocks of Eigen matrices. 
 In our largest calculations, ABodyOps allocate a total of ~1 TB of RAM via BodyOps. Proper memory management of ABodyOps 
