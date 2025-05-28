@@ -1,9 +1,15 @@
 # Code Snippets from my Graduate Work on IMSRG for Nuclear Matter
-Neutron stars are of great interest in physics, as understanding them sheds light on the existence of new possible states of matter, and also on the origin of heavy elements within our solar system. For my doctorate, I applied the quantum many-body method In-Medium Similarity Renormalization Group (IMSRG) to study neutron stars by solving coupled ODEs (“flow equations”) that govern the evolution of nuclear interactions on a finite grid of momenta with periodic boundary conditions. As the chief program architect in a team of four scientists, I built a state-of-the-art high performance program from the ground up that simulates many interacting nucleons within a neutron star to output physical quantities (eigenvalues) that determine its pressure, stability, and 3D properties.
+Neutron stars have been of great interest to me, as understanding them sheds light on the existence of new possible 
+states of matter, and also on the origin of heavy elements within our solar system. For my doctorate, I applied the quantum 
+many-body method In-Medium Similarity Renormalization Group (IMSRG) to study neutron stars by solving coupled 
+ordinary differential equations that govern the evolution of nuclear interactions on a finite grid of momenta with periodic boundary conditions. 
+As the chief program architect in a team of four scientists, I built a state-of-the-art high performance program from the 
+ground up that simulates many interacting nucleons within a neutron star to output physical quantities (eigenvalues) 
+that determine its pressure, stability, and 3D properties.
 
 > **Our Nuclear Matter IMSRG program is proprietary to the Facility for Rare Isotope Beams (FRIB) and was decided to be kept private.
 > This repository displays snippets of the code to the general public. See the description of each file below. 
-> Also see `Presentation.pdf` for more details.**
+> Also see [`Presentation.pdf`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/Presentation.pdf) for more details.**
 ## Background
 Neutron stars are primarily composed of neutrons, protons, and electrons with a ∼ 5% proton fraction.
 The nuclear structure of neutron stars can be obtained by modeling an infinite sea of protons and neutrons interacting via nuclear forces using quantum mechanics.
@@ -29,7 +35,7 @@ It uses the various algebraic operations defined for `ABodyOps`&mdash;improving 
 It also uses two buffers to cleverly cache the results of recursive commutators.
 ## Results
 ### `results/ExampleOutput.txt`
-Output from one of our production calculations. We take the converged energy per particle $E/A$ to be the 
+Output from one of our production calculations. The converged energy per particle $E/A$ is taken to be the
 ground state energy of a neutron star (if at a ∼ 5% proton fraction).
 ### `results/RuntimeScaling.png`
 Runtime performance of the IMSRG as we increase the number wavefunctions in the box ($N_{orbitals}$). 
