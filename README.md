@@ -18,26 +18,26 @@ box of volume $V$ with an associated particle density $\rho=A/V$, where $A=N+Z$ 
 To account for a finite $A$ and $V$, we enforce that wavefunctions in the box have periodic boundary conditions&mdash;artificially 
 constructing infinitely many copies of our finite system! We then manipulate these interactions to obtain physical properties of the star. 
 ## Code
-### `src/ABodyOp.h`
+### [`src/ABodyOp.h`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/src/ABodyOp.h)
 `ABodyOps` are a foundational data structure of our IMSRG code. They store pointers to `BodyOps`&mdash;which store blocks of Eigen matrices.
 In our largest calculations, `ABodyOps` allocate a total of ~1 TB of RAM via `BodyOps`. 
 Proper memory management of `ABodyOps` and their subsidiaries `BodyOps` is therefore **crucial**. 
 Moreover, commutators (tensor contractions) between `ABodyOps` are the most performance limiting operations in the code. 
 To achieve the code's performance at scale, I made a multitude of optimizations to `ABodyOps` and their commutators.
-### `src/Commutator.cpp`
+### [`src/Commutator.cpp`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/src/Commutator.cpp)
 Commutators are comprised of many tensor contractions between `BodyOps` (components of `ABodyOps`). 
 Commutators are the most performance limiting operations in the code, and are thus highly optimized. 
 `Commute()` is optimized with OpenMP, BLAS, cuBLAS, and MPI as well as symmetry exploitations and clever rewritings of tensor contractions.
-### `src/Transformer.cpp`
+### [`src/Transformer.cpp`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/src/Transformer.cpp)
 `Transformers` inherit from `ABodyOps`. `Transformer::Transform()` is used to perform the various series 
 expansions in the IMSRG. 
 It uses the various algebraic operations defined for `ABodyOps`&mdash;improving the readability of the code. 
 It also uses two buffers to cleverly cache the results of recursive commutators.
 ## Results
-### `results/ExampleOutput.txt`
+### [`results/ExampleOutput.txt`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/results/ExampleOutput.txt)
 Output from one of our production calculations. The converged energy per particle $E/A$ is taken to be the
 ground state energy of a neutron star (if at a ∼ 5% proton fraction).
-### `results/RuntimeScaling.png`
+### [`results/RuntimeScaling.png`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/results/RuntimeScaling.png)
 Runtime performance of the IMSRG as we increase the number wavefunctions in the box ($N_{orbitals}$). 
-### `results/EOS.png`
+### [`results/EOS.png`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/results/EOS.png)
 Ground state energy of the star at differing $\rho$ (if at a ∼ 5% proton fraction). 
