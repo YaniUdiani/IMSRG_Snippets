@@ -11,7 +11,7 @@ that determine its pressure, stability, and 3D properties.
 
 > **Our Nuclear Matter IMSRG program is proprietary to the Facility for Rare Isotope Beams (FRIB) and was decided to be kept private.
 > This repository displays snippets of the code to the general public. See the description of each file below. 
-> Also see [`Presentation.pdf`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/Presentation.pdf) for more details.**
+> Also see [`Presentation.pdf`](./Presentation.pdf) for more details.**
 ## Background
 <p align="center"><img src="./src/Images/Particles.png" alt="Particles changing energy levels in the box" class="center" width="320"/></p>
 
@@ -22,7 +22,7 @@ box of volume $V$ with an associated particle density $\rho=A/V$, where $A=N+Z$ 
 To account for a finite $A$ and $V$, we enforce that wavefunctions in the box have periodic boundary conditions&mdash;artificially 
 constructing infinitely many copies of our finite system! We then manipulate these interactions to obtain physical properties of the star. 
 ## Code
-### [`src/ABodyOp.h`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/src/ABodyOp.h)
+### [`src/ABodyOp.h`](./src/ABodyOp.h)
 <p align="center"><img src="./src/Images/Hamiltonian.png" alt="Hierarchy of tensors in our code base" class="center" width="600"/></p>
 
 `ABodyOps` are a foundational data structure of our IMSRG code. They store pointers to `BodyOps`&mdash;which store blocks of Eigen matrices.
@@ -30,22 +30,22 @@ In our largest calculations, `ABodyOps` allocate nearly 1 TB of RAM via `BodyOps
 Proper memory management of `ABodyOps` and their subsidiaries `BodyOps` is therefore **crucial**. 
 Moreover, commutators (tensor contractions) between `ABodyOps` are the most performance limiting operations in the code. 
 To achieve the code's performance at scale, I made a multitude of optimizations to `ABodyOps` and their commutators.
-### [`src/Commutator.cpp`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/src/Commutator.cpp)
+### [`src/Commutator.cpp`](./src/Commutator.cpp)
 <p align="center"><img src="./src/Images/Commutator.png" alt="Commutators are one of our main performance bottlenecks" class="center" width="600"/></p>
 
 Commutators are comprised of many tensor contractions between `BodyOps` (components of `ABodyOps`). 
 Commutators are the most performance limiting operations in the code, and are thus highly optimized. 
 `Commute()` is optimized with OpenMP, BLAS, cuBLAS, and MPI as well as symmetry exploitations and clever rewritings of tensor contractions.
-### [`src/Transformer.cpp`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/src/Transformer.cpp)
+### [`src/Transformer.cpp`](./src/Transformer.cpp)
 `Transformers` inherit from `ABodyOps`. `Transformer::Transform()` is used to perform the various series 
 expansions in the IMSRG. 
 It uses the various algebraic operations defined for `ABodyOps`&mdash;improving the readability of the code. 
 It also uses two buffers to cleverly cache the results of recursive commutators.
 ## Results
-### [`results/ExampleOutput.txt`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/results/ExampleOutput.txt)
+### [`results/ExampleOutput.txt`](./results/ExampleOutput.txt)
 Output from one of our production calculations. The converged energy per particle $E/A$ is taken to be the
 ground state energy of a neutron star (if at a ∼ 5% proton fraction).
-### [`results/RuntimeScaling.png`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/results/RuntimeScaling.png)
+### [`results/RuntimeScaling.png`](./results/RuntimeScaling.png)
 <p align="center"><img src="./results/RuntimeScaling.png" alt="Runtime performance of the IMSRG as we increase the number wavefunctions in the box ($N_{orbitals}$)." class="center" width="600"/></p>
 
 Runtime performance of the IMSRG as we increase the number wavefunctions in the box ($N_{orbitals}$). 
