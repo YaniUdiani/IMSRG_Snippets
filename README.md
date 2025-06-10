@@ -1,5 +1,5 @@
 # Code Snippets from my Graduate Work on IMSRG for Nuclear Matter
-<img src="./src/Images/NSMerger.png" alt="Neutron star merger" width="400"/>
+<center><img src="./src/Images/NSMerger.png" alt="Neutron star merger" width="400"/></center>
 
 Neutron stars have been of great interest to me, as understanding them sheds light on the existence of new possible 
 states of matter, and also on the origin of heavy elements within our solar system. For my doctorate, I applied the quantum 
@@ -13,7 +13,7 @@ that determine its pressure, stability, and 3D properties.
 > This repository displays snippets of the code to the general public. See the description of each file below. 
 > Also see [`Presentation.pdf`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/Presentation.pdf) for more details.**
 ## Background
-<img src="./src/Images/Particles.png" alt="Particles changing energy levels in the box" width="200"/>
+<center><img src="./src/Images/Particles.png" alt="Particles changing energy levels in the box" width="200"/></center>
 
 Neutron stars are primarily composed of neutrons, protons, and electrons with a ∼ 5% proton fraction.
 The nuclear structure of neutron stars can be obtained by modeling an infinite sea of protons and neutrons interacting via nuclear forces using quantum mechanics.
@@ -23,7 +23,7 @@ To account for a finite $A$ and $V$, we enforce that wavefunctions in the box ha
 constructing infinitely many copies of our finite system! We then manipulate these interactions to obtain physical properties of the star. 
 ## Code
 ### [`src/ABodyOp.h`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/src/ABodyOp.h)
-<img src="./src/Images/Hamiltonian.png" alt="Hierarchy of tensors in our code base" width="500"/>
+<center><img src="./src/Images/Hamiltonian.png" alt="Hierarchy of tensors in our code base" width="500"/></center>
 
 `ABodyOps` are a foundational data structure of our IMSRG code. They store pointers to `BodyOps`&mdash;which store blocks of Eigen matrices.
 In our largest calculations, `ABodyOps` allocate nearly 1 TB of RAM via `BodyOps`. 
