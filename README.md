@@ -1,4 +1,5 @@
 # Code Snippets from my Graduate Work on IMSRG for Nuclear Matter
+![Alt text](./src/Images/NSMerger.png)
 Neutron stars have been of great interest to me, as understanding them sheds light on the existence of new possible 
 states of matter, and also on the origin of heavy elements within our solar system. For my doctorate, I applied the quantum 
 many-body method In-Medium Similarity Renormalization Group (IMSRG) to study neutron stars by solving coupled 
@@ -20,7 +21,7 @@ constructing infinitely many copies of our finite system! We then manipulate the
 ## Code
 ### [`src/ABodyOp.h`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/src/ABodyOp.h)
 `ABodyOps` are a foundational data structure of our IMSRG code. They store pointers to `BodyOps`&mdash;which store blocks of Eigen matrices.
-In our largest calculations, `ABodyOps` allocate a total of ~1 TB of RAM via `BodyOps`. 
+In our largest calculations, `ABodyOps` allocate nearly 1 TB of RAM via `BodyOps`. 
 Proper memory management of `ABodyOps` and their subsidiaries `BodyOps` is therefore **crucial**. 
 Moreover, commutators (tensor contractions) between `ABodyOps` are the most performance limiting operations in the code. 
 To achieve the code's performance at scale, I made a multitude of optimizations to `ABodyOps` and their commutators.
