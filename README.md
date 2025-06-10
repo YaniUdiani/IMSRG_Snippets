@@ -13,7 +13,7 @@ that determine its pressure, stability, and 3D properties.
 > This repository displays snippets of the code to the general public. See the description of each file below. 
 > Also see [`Presentation.pdf`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/Presentation.pdf) for more details.**
 ## Background
-<p align="center"><img src="./src/Images/Particles.png" alt="Particles changing energy levels in the box" class="center" width="200"/></p>
+<p align="center"><img src="./src/Images/Particles.png" alt="Particles changing energy levels in the box" class="center" width="320"/></p>
 
 Neutron stars are primarily composed of neutrons, protons, and electrons with a ∼ 5% proton fraction.
 The nuclear structure of neutron stars can be obtained by modeling an infinite sea of protons and neutrons interacting via nuclear forces using quantum mechanics.
@@ -23,7 +23,7 @@ To account for a finite $A$ and $V$, we enforce that wavefunctions in the box ha
 constructing infinitely many copies of our finite system! We then manipulate these interactions to obtain physical properties of the star. 
 ## Code
 ### [`src/ABodyOp.h`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/src/ABodyOp.h)
-<p align="center"><img src="./src/Images/Hamiltonian.png" alt="Hierarchy of tensors in our code base" class="center" width="500"/></p>
+<p align="center"><img src="./src/Images/Hamiltonian.png" alt="Hierarchy of tensors in our code base" class="center" width="600"/></p>
 
 `ABodyOps` are a foundational data structure of our IMSRG code. They store pointers to `BodyOps`&mdash;which store blocks of Eigen matrices.
 In our largest calculations, `ABodyOps` allocate nearly 1 TB of RAM via `BodyOps`. 
@@ -31,6 +31,8 @@ Proper memory management of `ABodyOps` and their subsidiaries `BodyOps` is there
 Moreover, commutators (tensor contractions) between `ABodyOps` are the most performance limiting operations in the code. 
 To achieve the code's performance at scale, I made a multitude of optimizations to `ABodyOps` and their commutators.
 ### [`src/Commutator.cpp`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/src/Commutator.cpp)
+<p align="center"><img src="./src/Images/Commutator.png" alt="Commutators are one of our main performance bottlenecks" class="center" width="600"/></p>
+
 Commutators are comprised of many tensor contractions between `BodyOps` (components of `ABodyOps`). 
 Commutators are the most performance limiting operations in the code, and are thus highly optimized. 
 `Commute()` is optimized with OpenMP, BLAS, cuBLAS, and MPI as well as symmetry exploitations and clever rewritings of tensor contractions.
@@ -44,6 +46,10 @@ It also uses two buffers to cleverly cache the results of recursive commutators.
 Output from one of our production calculations. The converged energy per particle $E/A$ is taken to be the
 ground state energy of a neutron star (if at a ∼ 5% proton fraction).
 ### [`results/RuntimeScaling.png`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/results/RuntimeScaling.png)
+<p align="center"><img src="./results/RuntimeScaling.png" alt="Runtime performance of the IMSRG as we increase the number wavefunctions in the box ($N_{orbitals}$)." class="center" width="600"/></p>
+
 Runtime performance of the IMSRG as we increase the number wavefunctions in the box ($N_{orbitals}$). 
-### [`results/EOS.png`](https://github.com/YaniUdiani/IMSRG_Snippets/blob/main/results/EOS.png)
+### [`results/EOS.png`](./results/EOS.png)
+<p align="center"><img src="./results/EOS.png" alt="Ground state energy of the star at differing $\rho$ (if at a ∼ 5% proton fraction)." class="center" width="600"/></p>
+
 Ground state energy of the star at differing $\rho$ (if at a ∼ 5% proton fraction). 
