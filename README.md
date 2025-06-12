@@ -11,7 +11,8 @@ that determine its pressure, stability, and 3D properties.
 
 > **Our Nuclear Matter IMSRG program is proprietary to the Facility for Rare Isotope Beams (FRIB) and was decided to be kept private.
 > This repository displays snippets of the code to the general public. See the description of each file below. 
-> Also see [`Presentation.pdf`](./Presentation.pdf) for more details.**
+> For an abridged presentation on the computational details of my work, see [`Presentation.pdf`](./Presentation.pdf).
+> Also see [`Dissertation.pdf`](./Dissertation.pdf) for a complete scientific and computational description of my work.**
 ## Background
 <p align="center"><img src="./src/Images/Particles.png" alt="Particles changing energy levels in the box" class="center" width="320"/></p>
 
